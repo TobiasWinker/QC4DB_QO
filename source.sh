@@ -1,4 +1,6 @@
-export QC4DB_QO_BASE=$(pwd)
+
+export QC4DB_QO_REP_BASE=$(git rev-parse --show-toplevel)
+export QC4DB_QO_BASE=$QC4DB_QO_REP_BASE
 
 # PostgreSQL
 export PATH=$QC4DB_QO_BASE/postgresql/install/bin:$PATH

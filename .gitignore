@@ -3,15 +3,15 @@ __pycache__/*
 .vscode/*
 analysis/*
 logs/*
-testCode/*
+postgresql/
 nohup.out
 generateTasks.py
 tasks*.txt
 Qiskit-Tests.txt
 D-Wave-Tests.txt
 *.log
-data/
 benchmarks/
 results/
 test/
 setup.cfg
+data/
