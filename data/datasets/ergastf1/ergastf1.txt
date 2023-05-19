@@ -1,0 +1,4 @@
+create database ergastf1;
+\c ergastf1;
+\i datasets/ergastf1/create.sql;
+\i datasets/ergastf1/load.sql;

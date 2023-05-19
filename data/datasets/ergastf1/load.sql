@@ -1,0 +1,13 @@
+\copy constructorstandings from 'datasets/ergastf1/constructor_standings.csv' with delimiter ',' NULL AS '\N' CSV header;
+\copy constructorresults from 'datasets/ergastf1/constructor_results.csv' with delimiter ',' NULL AS '\N' CSV header;
+\copy results from 'datasets/ergastf1/results.csv' with delimiter ',' NULL AS '\N' CSV header;
+\copy qualifying from 'datasets/ergastf1/qualifying.csv' with delimiter ',' NULL AS '\N' CSV header;
+\copy pitstops from 'datasets/ergastf1/pit_stops.csv' with delimiter ',' NULL AS '\N' CSV header;
+\copy laptimes from 'datasets/ergastf1/lap_times.csv' with delimiter ',' NULL AS '\N' CSV header;
+\copy constructors from 'datasets/ergastf1/constructors.csv' with delimiter ',' NULL AS '\N' CSV header;
+\copy status from 'datasets/ergastf1/status.csv' with delimiter ',' NULL AS '\N' CSV header;
+\copy races from 'datasets/ergastf1/races.csv' with delimiter ',' NULL AS '\N' CSV header;
+\copy drivers from 'datasets/ergastf1/drivers.csv' with delimiter ',' NULL AS '\N' CSV header;
+\copy seasons from 'datasets/ergastf1/seasons.csv' with delimiter ',' NULL AS '\N' CSV header;
+\copy circuits from 'datasets/ergastf1/circuits.csv' with delimiter ',' NULL AS '\N' CSV header;
+\copy driverstandings from 'datasets/ergastf1/driver_standings.csv' with delimiter ',' NULL AS '\N' CSV header;

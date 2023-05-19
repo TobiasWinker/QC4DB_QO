@@ -1,0 +1,5 @@
+create database stats;
+\c stats;
+\i datasets/stats/stats_simplified/stats.sql;
+\i datasets/stats/stats_load.sql;
+\i datasets/stats/stats_index.sql;
