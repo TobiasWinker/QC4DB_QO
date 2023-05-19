@@ -10,7 +10,6 @@ tasks*.txt
 Qiskit-Tests.txt
 D-Wave-Tests.txt
 *.log
-benchmarks/
 results/
 test/
 setup.cfg
