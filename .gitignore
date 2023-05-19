@@ -1,0 +1,17 @@
+__pycache__/*
+*.pyc
+.vscode/*
+analysis/*
+logs/*
+testCode/*
+nohup.out
+generateTasks.py
+tasks*.txt
+Qiskit-Tests.txt
+D-Wave-Tests.txt
+*.log
+data/
+benchmarks/
+results/
+test/
+setup.cfg
