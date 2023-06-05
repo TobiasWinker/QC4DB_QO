@@ -1,25 +1,29 @@
+import random
 import sys
 import ast
 
+import numpy as np
+import torch
+
 from datetime import datetime
 from ML.GradientQML import GradientQML
-from ML.Genetic import GeneticAlgorithm
 from ML.models import classicalNN, vqc
 from postgresqlJoins import PostgresqlJoins
 from util.databases import ErgastF1
 from util.dataformat import DataFormat
 from ML import interpretation
 
+# Default settings
 settings = {
     "features": "simple",
     "encoding": "rx",
     "reuploading": False,
-    "reps": 20,
+    "reps": 6,
     "calc": "yz",
     "entangleType": "circular",
     "entangle": "cx",
     "reward": "rational",
-    "numEpisodes": 8000,
+    "numEpisodes": 100,
     "optimizer": "SGD",
     "lr": [0.01, 100, 0.9],
     "prefix": "Loss_New",
@@ -33,27 +37,30 @@ settings = {
 if len(sys.argv) > 1:
     settings.update(ast.literal_eval(sys.argv[1]))
 
+# init random 
+random.seed(settings["seed"])
+np.random.seed(settings["seed"]+1)
+torch.manual_seed(settings["seed"]+2)
+
 start_time = datetime.now()
 
+# Create the machine learning environment
 env = PostgresqlJoins(ErgastF1(), inputFile="ergastf1nC.csv", dataFormat=DataFormat(0, 1, -1))
 
 print("Qubit Input : {}, Output: {}".format(env.getInputSize(), env.getOutputSize()))
 
-# use quantum model
+# Create a model
 model = vqc(settings=settings, num_inputs=env.getInputSize(), num_outputs=env.getOutputSize())
 
-# use classical model
-# model = classicalNN()
-
-# select the algorithm
-#nn = GeneticAlgorithm(model,{"numEpisodes":40,"lr":0.001})
+# Create the learning algorithm
 nn = GradientQML(interpretation.fromString(settings["loss"], model), env, settings)
-#nn = GeneticAlgorithm(model,env,settings)
 
+# Run the algorithm
 nn.run()
 
 end_time = datetime.now()
 print("Duration =", end_time - start_time)
 
 nn.listSolutions()
+# print final quality
 print(nn.env.elvaluateModel(nn.agent))

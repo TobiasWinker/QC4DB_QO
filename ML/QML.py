@@ -20,11 +20,6 @@ class QML:
         self.agent = agent
         self.env = env
 
-        seed = self.settings["seed"]
-        random.seed(seed)
-        np.random.seed(seed)
-        torch.manual_seed(seed)
-
         self.logInterval = 100
         self.numEpisodes = self.settings["numEpisodes"]
 
@@ -49,6 +44,7 @@ class QML:
             file.write(",".join(str(e) for e in entry) + "\n")
 
     def end(self):
+        self.listSolutions()
         self.resultFile.close()
 
     def saveModel(self):
